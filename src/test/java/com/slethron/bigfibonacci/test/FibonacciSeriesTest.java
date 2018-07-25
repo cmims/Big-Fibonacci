@@ -9,28 +9,28 @@ import java.math.BigInteger;
 import static org.junit.Assert.assertEquals;
 
 public class FibonacciSeriesTest {
-    private FibonacciSeries fibonacciSeries;
+    private FibonacciSeries series;
     
     @Before
     public void before() {
-        fibonacciSeries = new FibonacciSeries();
+        series = new FibonacciSeries();
     }
-
+    
     @Test
     public void getNthFibReturnsFofN() {
-        assertEquals(BigInteger.ZERO, fibonacciSeries.get(0));
-        assertEquals(BigInteger.ONE, fibonacciSeries.get(1));
-        assertEquals(BigInteger.ONE, fibonacciSeries.get(2));
-        assertEquals(BigInteger.TWO, fibonacciSeries.get(3));
-        assertEquals(new BigInteger("3"), fibonacciSeries.get(4));
-        assertEquals(new BigInteger("5"), fibonacciSeries.get(5));
-        assertEquals(new BigInteger("8"), fibonacciSeries.get(6));
-        assertEquals(new BigInteger("13"), fibonacciSeries.get(7));
-        assertEquals(new BigInteger("21"), fibonacciSeries.get(8));
-        assertEquals(new BigInteger("34"), fibonacciSeries.get(9));
-        assertEquals(new BigInteger("55"), fibonacciSeries.get(10));
+        assertEquals(BigInteger.ZERO, series.get(0));
+        assertEquals(BigInteger.ONE, series.get(1));
+        assertEquals(BigInteger.ONE, series.get(2));
+        assertEquals(BigInteger.TWO, series.get(3));
+        assertEquals(new BigInteger("3"), series.get(4));
+        assertEquals(new BigInteger("5"), series.get(5));
+        assertEquals(new BigInteger("8"), series.get(6));
+        assertEquals(new BigInteger("13"), series.get(7));
+        assertEquals(new BigInteger("21"), series.get(8));
+        assertEquals(new BigInteger("34"), series.get(9));
+        assertEquals(new BigInteger("55"), series.get(10));
         //...
-        assertEquals(new BigInteger("6765"), fibonacciSeries.get(20));
+        assertEquals(new BigInteger("6765"), series.get(20));
     }
     
     @Test
@@ -54,7 +54,7 @@ public class FibonacciSeriesTest {
     public void getZerothTenFibonacciNumbers() {
         int lowerBound = 0;
         int upperBound = 10;
-        var fibs = fibonacciSeries.get(lowerBound, upperBound);
+        var fibs = series.get(lowerBound, upperBound);
         
         assertEquals(BigInteger.ZERO, fibs[0]);
         assertEquals(BigInteger.ONE, fibs[1]);
