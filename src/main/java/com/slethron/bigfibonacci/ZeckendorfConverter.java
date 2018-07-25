@@ -10,7 +10,7 @@ public class ZeckendorfConverter {
     private static FibonacciSeries series;
     
     public ZeckendorfConverter() {
-        series = new FibonacciSeries();
+        series = FibonacciSeries.getCurrent();
     }
     
     /**

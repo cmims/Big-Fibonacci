@@ -4,6 +4,8 @@ import java.math.BigInteger;
 import java.util.HashMap;
 
 public class FibonacciSeries {
+    private static FibonacciSeries instance = null;
+    
     private BigInteger fib;
     private BigInteger prev;
     private int index;
@@ -17,6 +19,14 @@ public class FibonacciSeries {
         
         series = new HashMap<>();
         series.put(index, fib);
+    }
+    
+    static FibonacciSeries getCurrent() {
+        if (instance == null) {
+            instance = new FibonacciSeries();
+        }
+        
+        return instance;
     }
     
     public BigInteger get(int index) {
@@ -66,7 +76,7 @@ public class FibonacciSeries {
     }
     
     public static void main(String[] args) {
-        var series = new FibonacciSeries();
+        var series = FibonacciSeries.getCurrent();
         for (var i = -8; i <= 8; i++) {
             System.out.print("| f(" + i + ") ");
             if (i == 8) {
