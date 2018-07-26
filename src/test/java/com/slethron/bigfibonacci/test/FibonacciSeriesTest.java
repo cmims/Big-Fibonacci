@@ -67,4 +67,10 @@ public class FibonacciSeriesTest {
         assertEquals(new BigInteger("21"), fibs[8]);
         assertEquals(new BigInteger("34"), fibs[9]);
     }
+    
+    @Test
+    public void getIndexOfFibReturnsCorrectIndex() {
+        var expectedIndex = 15;
+        assertEquals("Index returned differs from expected index", 15, series.getIndexOfFib(series.get(expectedIndex)));
+    }
 }
