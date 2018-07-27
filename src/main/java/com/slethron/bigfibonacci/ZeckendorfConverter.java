@@ -3,6 +3,9 @@ package com.slethron.bigfibonacci;
 import java.math.BigInteger;
 import java.util.ArrayList;
 
+/**
+ * Contains methods pertaining to conversion of numbers to other Fibonacci representations.
+ */
 public class ZeckendorfConverter {
     private static FibonacciSeries series;
     
@@ -13,9 +16,8 @@ public class ZeckendorfConverter {
     /**
      * Zeckendorf's theroem states that every positive integer can be represented uniquely as the sum of one or more
      * distinct Fibonacci numbers in such a way that the sum does not include any two consecutive Fibonacci numbers.
-     *
      * @param num Number to be converted to Zeckendorf representation
-     * @return an array containing the Zeckendorf summation
+     * @return Array containing the components of the Zeckendorf representation in descending order
      */
     public BigInteger[] getZeckendorfRepresentation(BigInteger num) {
         if (num.compareTo(BigInteger.ZERO) < 0) {
@@ -38,12 +40,11 @@ public class ZeckendorfConverter {
     }
     
     /**
-     * Zeckendor's theorem can be further expanded to include negatively indexed Fibonacci numbers. More precisely,
+     * Zeckendorf's theorem can be further expanded to include negatively indexed Fibonacci numbers. More precisely,
      * every integer, positive or negative, can be uniquely represented as the sum of one or more distinct
-     * nega-Fibonacci numbers in such a way that the sum does not include any two consecutive nega-Fibonacci numbers.
-     *
-     * @param num
-     * @return
+     * nega-Fibonacci numbers in such a way that the sum does not include any two consecutive numbers in the sequence.
+     * @param num Number being converted to nega-Fibonacci representation
+     * @return Array containing the components of the representation in the order found (numbers with more digits first)
      */
     public BigInteger[] getNegativelyIndexedFibonacciRepresentation(BigInteger num) {
         var fibs = new ArrayList<BigInteger>();
@@ -89,8 +90,8 @@ public class ZeckendorfConverter {
             if (i != components.length - 1) {
                 System.out.print(",");
             }
-            System.out.println("]");
         }
+        System.out.println("]");
         
         System.out.print("\nNegatively Indexed Fibonacci representation of " + num + ":\n[");
         components = zeckendorfConverter.getNegativelyIndexedFibonacciRepresentation(num);
@@ -99,7 +100,7 @@ public class ZeckendorfConverter {
             if (i != components.length - 1) {
                 System.out.print(",");
             }
-            System.out.println("]");
         }
+        System.out.println("]");
     }
 }

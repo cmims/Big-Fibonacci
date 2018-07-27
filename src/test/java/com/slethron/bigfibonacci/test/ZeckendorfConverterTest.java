@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.math.BigInteger;
 
-import static org.junit.Assert.assertArrayEquals;
+import static com.google.common.truth.Truth.assertWithMessage;
 
 public class ZeckendorfConverterTest {
     private ZeckendorfConverter converter;
@@ -18,101 +18,93 @@ public class ZeckendorfConverterTest {
     
     @Test
     public void getZeckendorfRepresentationOf50() {
-        var num = new BigInteger("50");
-        
+        var num = BigInteger.valueOf(50);
         var expectedComponents = new BigInteger[] {
-                new BigInteger("34"),
-                new BigInteger("13"),
-                new BigInteger("3")
+                BigInteger.valueOf(34),
+                BigInteger.valueOf(13),
+                BigInteger.valueOf(3)
         };
-        
         var components = converter.getZeckendorfRepresentation(num);
-        
-        assertArrayEquals("Representation differs from expected", expectedComponents, components);
+        assertWithMessage("Representation differs from expected")
+                .that(components)
+                .isEqualTo(expectedComponents);
     }
     
     @Test
     public void getZeckendorfRepresentationOf100() {
-        var num = new BigInteger("100");
-        
+        var num = BigInteger.valueOf(100);
         var expectedComponents = new BigInteger[] {
-                new BigInteger("89"),
-                new BigInteger("8"),
-                new BigInteger("3")
+                BigInteger.valueOf(89),
+                BigInteger.valueOf(8),
+                BigInteger.valueOf(3)
         };
-        
         var components = converter.getZeckendorfRepresentation(num);
-        
-        assertArrayEquals("Representation differs from expected", expectedComponents, components);
+        assertWithMessage("Representation differs from expected")
+                .that(components)
+                .isEqualTo(expectedComponents);
     }
     
     @Test
     public void getZeckendorfRepresentationOf0() {
         var num = BigInteger.ZERO;
-        
-        var expectedComponents = new BigInteger[0];
-        
         var components = converter.getZeckendorfRepresentation(num);
-        
-        assertArrayEquals("Representation differs from expected", expectedComponents, components);
+        assertWithMessage("Representation differs from expected")
+                .that(components)
+                .isEmpty();
     }
     
     @Test
     public void getNegativelyIndexedFibonacciRepresentationOfNegative43() {
-        var num = new BigInteger("-43");
-        
+        var num = BigInteger.valueOf(-43);
         var expectedComponents = new BigInteger[] {
-                new BigInteger("-55"),
-                new BigInteger("13"),
+                BigInteger.valueOf(-55),
+                BigInteger.valueOf(13),
                 BigInteger.ONE.negate()
         };
-
         var components = converter.getNegativelyIndexedFibonacciRepresentation(num);
-
-        assertArrayEquals("Representation differs from expected", expectedComponents, components);
+        assertWithMessage("Representation differs from expected")
+                .that(components)
+                .isEqualTo(expectedComponents);
     }
     
     @Test
     public void getNegativelyIndexFibonacciRepresentationOfNegative11() {
-        var num = new BigInteger("-11");
-        
+        var num = BigInteger.valueOf(-11);
         var expectedComponents = new BigInteger[] {
-                new BigInteger("-8"),
-                new BigInteger("-3")
+                BigInteger.valueOf(-8),
+                BigInteger.valueOf(-3)
         };
-        
         var components = converter.getNegativelyIndexedFibonacciRepresentation(num);
-        
-        assertArrayEquals("Representation differs from expected", expectedComponents, components);
+        assertWithMessage("Representation differs from expected")
+                .that(components)
+                .isEqualTo(expectedComponents);
     }
     
     @Test
     public void getNegativelyIndexedFibonacciRepresentationOf12() {
-        var num = new BigInteger("12");
-        
+        var num = BigInteger.valueOf(12);
         var expectedComponents = new BigInteger[] {
-                new BigInteger("13"),
+                BigInteger.valueOf(13),
                 BigInteger.ONE.negate()
         };
-        
         var components = converter.getNegativelyIndexedFibonacciRepresentation(num);
-        
-        assertArrayEquals("Representation differs from expected", expectedComponents, components);
+        assertWithMessage("Representation differs from expected")
+                .that(components)
+                .isEqualTo(expectedComponents);
     }
     
     @Test
     public void getNegativelyIndexedFibonacciRepresentationOf24() {
-        var num = new BigInteger("24");
-        
+        var num = BigInteger.valueOf(24);
         var expectedComponents = new BigInteger[] {
-                new BigInteger("34"),
-                new BigInteger("-8"),
-                new BigInteger("-3"),
+                BigInteger.valueOf(34),
+                BigInteger.valueOf(-8),
+                BigInteger.valueOf(-3),
                 BigInteger.ONE
         };
-        
         var components = converter.getNegativelyIndexedFibonacciRepresentation(num);
-        
-        assertArrayEquals("Representation differs from expected", expectedComponents, components);
+        assertWithMessage("Representation differs from expected")
+                .that(components)
+                .isEqualTo(expectedComponents);
     }
 }
