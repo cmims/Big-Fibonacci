@@ -128,6 +128,5 @@ public class FibonacciPrimeUtilTest {
         assertWithMessage("Factors returned for index %s differ from expected", index)
                 .that(factors)
                 .isEqualTo(expectedFactors);
-        
     }
 }

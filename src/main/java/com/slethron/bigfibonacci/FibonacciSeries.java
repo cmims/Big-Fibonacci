@@ -21,7 +21,7 @@ public class FibonacciSeries {
         series.put(index, fib);
     }
     
-    static FibonacciSeries current() {
+    public static FibonacciSeries current() {
         if (instance == null) {
             instance = new FibonacciSeries();
         }
@@ -76,6 +76,11 @@ public class FibonacciSeries {
     }
     
     public int getIndexOfFib(BigInteger fib) {
+        var negate = false;
+        if (fib.signum() < 0) {
+            negate = true;
+        }
+        
         var index = 0;
         while (get(index).compareTo(fib) < 0) {
             index++;
@@ -83,6 +88,10 @@ public class FibonacciSeries {
         
         if (!get(index).equals(fib)) {
             throw new IllegalArgumentException("Number is not a Fibonacci number");
+        }
+        
+        if (negate) {
+            return -index;
         }
         
         return index;

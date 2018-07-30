@@ -77,4 +77,13 @@ public class FibonacciSeriesTest {
                 .that(series.getIndexOfFib(fib))
                 .isEqualTo(expectedIndex);
     }
+    
+    @Test
+    public void currentInstance() {
+        var instance0 = FibonacciSeries.current();
+        var instance1 = FibonacciSeries.current();
+        assertThat(instance0).isSameAs(instance1);
+        assertThat(instance0).isInstanceOf(FibonacciSeries.class);
+        assertThat(instance1).isInstanceOf(FibonacciSeries.class);
+    }
 }
