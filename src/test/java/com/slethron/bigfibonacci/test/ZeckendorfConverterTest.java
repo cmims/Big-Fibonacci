@@ -17,51 +17,51 @@ public class ZeckendorfConverterTest {
     }
     
     @Test
-    public void getZeckendorfRepresentationOf50() {
+    public void findZeckendorfRepresentationOf50() {
         var num = BigInteger.valueOf(50);
         var expectedComponents = new BigInteger[] {
                 BigInteger.valueOf(34),
                 BigInteger.valueOf(13),
                 BigInteger.valueOf(3)
         };
-        var components = converter.getZeckendorfRepresentation(num);
+        var components = converter.findZeckendorfRepresentation(num);
         assertWithMessage("Representation differs from expected")
                 .that(components)
                 .isEqualTo(expectedComponents);
     }
     
     @Test
-    public void getZeckendorfRepresentationOf100() {
+    public void findZeckendorfRepresentationOf100() {
         var num = BigInteger.valueOf(100);
         var expectedComponents = new BigInteger[] {
                 BigInteger.valueOf(89),
                 BigInteger.valueOf(8),
                 BigInteger.valueOf(3)
         };
-        var components = converter.getZeckendorfRepresentation(num);
+        var components = converter.findZeckendorfRepresentation(num);
         assertWithMessage("Representation differs from expected")
                 .that(components)
                 .isEqualTo(expectedComponents);
     }
     
     @Test
-    public void getZeckendorfRepresentationOf0() {
+    public void findZeckendorfRepresentationOf0() {
         var num = BigInteger.ZERO;
-        var components = converter.getZeckendorfRepresentation(num);
+        var components = converter.findZeckendorfRepresentation(num);
         assertWithMessage("Representation differs from expected")
                 .that(components)
                 .isEmpty();
     }
     
     @Test
-    public void getNegativelyIndexedFibonacciRepresentationOfNegative43() {
+    public void findNegativelyIndexedFibonacciRepresentationOfNegative43() {
         var num = BigInteger.valueOf(-43);
         var expectedComponents = new BigInteger[] {
                 BigInteger.valueOf(-55),
                 BigInteger.valueOf(13),
                 BigInteger.ONE.negate()
         };
-        var components = converter.getNegativelyIndexedFibonacciRepresentation(num);
+        var components = converter.findNegativelyIndexedFibonacciRepresentation(num);
         assertWithMessage("Representation differs from expected")
                 .that(components)
                 .isEqualTo(expectedComponents);
@@ -74,27 +74,27 @@ public class ZeckendorfConverterTest {
                 BigInteger.valueOf(-8),
                 BigInteger.valueOf(-3)
         };
-        var components = converter.getNegativelyIndexedFibonacciRepresentation(num);
+        var components = converter.findNegativelyIndexedFibonacciRepresentation(num);
         assertWithMessage("Representation differs from expected")
                 .that(components)
                 .isEqualTo(expectedComponents);
     }
     
     @Test
-    public void getNegativelyIndexedFibonacciRepresentationOf12() {
+    public void findNegativelyIndexedFibonacciRepresentationOf12() {
         var num = BigInteger.valueOf(12);
         var expectedComponents = new BigInteger[] {
                 BigInteger.valueOf(13),
                 BigInteger.ONE.negate()
         };
-        var components = converter.getNegativelyIndexedFibonacciRepresentation(num);
+        var components = converter.findNegativelyIndexedFibonacciRepresentation(num);
         assertWithMessage("Representation differs from expected")
                 .that(components)
                 .isEqualTo(expectedComponents);
     }
     
     @Test
-    public void getNegativelyIndexedFibonacciRepresentationOf24() {
+    public void findNegativelyIndexedFibonacciRepresentationOf24() {
         var num = BigInteger.valueOf(24);
         var expectedComponents = new BigInteger[] {
                 BigInteger.valueOf(34),
@@ -102,7 +102,7 @@ public class ZeckendorfConverterTest {
                 BigInteger.valueOf(-3),
                 BigInteger.ONE
         };
-        var components = converter.getNegativelyIndexedFibonacciRepresentation(num);
+        var components = converter.findNegativelyIndexedFibonacciRepresentation(num);
         assertWithMessage("Representation differs from expected")
                 .that(components)
                 .isEqualTo(expectedComponents);

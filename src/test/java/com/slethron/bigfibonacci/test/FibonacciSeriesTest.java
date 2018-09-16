@@ -47,7 +47,7 @@ public class FibonacciSeriesTest {
         assertThat(FibonacciSeries.getRecursively(8)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(21));
         assertThat(FibonacciSeries.getRecursively(9)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(34));
         assertThat(FibonacciSeries.getRecursively(10)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(55));
-        //..
+        //...
         assertThat(FibonacciSeries.getRecursively(20)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(6765));
     }
     

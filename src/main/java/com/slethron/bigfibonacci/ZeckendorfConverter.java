@@ -19,7 +19,7 @@ public class ZeckendorfConverter {
      * @param num Number to be converted to Zeckendorf representation
      * @return Array containing the components of the Zeckendorf representation in descending order
      */
-    public BigInteger[] getZeckendorfRepresentation(BigInteger num) {
+    public BigInteger[] findZeckendorfRepresentation(BigInteger num) {
         if (num.compareTo(BigInteger.ZERO) < 0) {
             throw new IllegalArgumentException("Zeckendorf representation can only be obtained for positive integers");
         }
@@ -46,7 +46,7 @@ public class ZeckendorfConverter {
      * @param num Number being converted to nega-Fibonacci representation
      * @return Array containing the components of the representation in the order found (numbers with more digits first)
      */
-    public BigInteger[] getNegativelyIndexedFibonacciRepresentation(BigInteger num) {
+    public BigInteger[] findNegativelyIndexedFibonacciRepresentation(BigInteger num) {
         var fibs = new ArrayList<BigInteger>();
         while (num.compareTo(BigInteger.ZERO) != 0) {
             var index = 0;
@@ -84,7 +84,7 @@ public class ZeckendorfConverter {
         var num = new BigInteger("24");
         
         System.out.print("Zeckendorf representation of " + num + ":\n[");
-        var components = zeckendorfConverter.getZeckendorfRepresentation(num);
+        var components = zeckendorfConverter.findZeckendorfRepresentation(num);
         for (var i = 0; i < components.length; i++) {
             System.out.print(components[i]);
             if (i != components.length - 1) {
@@ -94,7 +94,7 @@ public class ZeckendorfConverter {
         System.out.println("]");
         
         System.out.print("\nNegatively Indexed Fibonacci representation of " + num + ":\n[");
-        components = zeckendorfConverter.getNegativelyIndexedFibonacciRepresentation(num);
+        components = zeckendorfConverter.findNegativelyIndexedFibonacciRepresentation(num);
         for (var i = 0; i < components.length; i++) {
             System.out.print(components[i]);
             if (i != components.length - 1) {

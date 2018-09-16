@@ -2,7 +2,6 @@ package com.slethron.bigfibonacci;
 
 import java.math.BigInteger;
 import java.util.*;
-import java.util.stream.IntStream;
 
 /**
  * Methods pertaining to calculations about Fibonacci numbers and prime numbers
@@ -15,21 +14,27 @@ public class FibonacciPrimeUtil {
     }
     
     /**
-     * Get all Fibonacci numbers that are also prime for a given range of indices
+     * Get all Fibonacci numbers that are also prime in a given range of indices
      * @param lowerBound Lower bound index (inclusive)
      * @param upperBound Upper bound index (exclusive)
-     * @return Array of Fibonacci primes numbers in ascending order
+     * @return HashMap with key-value pairs representing an index (key) and its corresponding Fibonacci number
      */
-    public BigInteger[] getFibonnaciPrimesInRange(int lowerBound, int upperBound) {
+    public HashMap<Integer, BigInteger> findFibonacciPrimesInRange(int lowerBound, int upperBound) {
         if (lowerBound <= 0 || upperBound <= 0) {
             throw new IllegalArgumentException("Lower bound and upper bound must be positive");
         } else if (lowerBound >= upperBound) {
             throw new IllegalArgumentException("Lower bound must be less than upper bound");
         }
-        return IntStream.range(lowerBound, upperBound)
-                .mapToObj(index -> series.get(index))
-                .filter(fib -> fib.isProbablePrime(1))
-                .toArray(BigInteger[]::new);
+        
+        var primes = new HashMap<Integer, BigInteger>();
+        for (var i = lowerBound; i <= upperBound; i++) {
+            var fib = series.get(i);
+            if (fib.isProbablePrime(1)) {
+                primes.put(i, fib);
+            }
+        }
+        
+        return primes;
     }
     
     /**
@@ -37,7 +42,7 @@ public class FibonacciPrimeUtil {
      * @param prime Prime number by which the Fibonacci number is divided
      * @return Index of the Fibonacci number in the sequence
      */
-    public int getFibonacciEntryPoint(BigInteger prime) {
+    public int findFibonacciEntryPoint(BigInteger prime) {
         if (prime.signum() <= 0) {
             throw new IllegalArgumentException("Number must be positive");
         } else if (!prime.isProbablePrime(1)) {
@@ -57,7 +62,7 @@ public class FibonacciPrimeUtil {
      * @param index Index of the Fibonacci number being factorized
      * @return Array of prime factors in ascending order
      */
-    public BigInteger[] getPrimeFactors(int index) {
+    public BigInteger[] findPrimeFactors(int index) {
         var primeFactors = new HashSet<BigInteger>();
         var fib = series.get(index);
         
@@ -78,20 +83,24 @@ public class FibonacciPrimeUtil {
     public static void main(String[] args) {
         var fibonacciPrimeUtil = new FibonacciPrimeUtil();
         
-        var primes = fibonacciPrimeUtil.getFibonnaciPrimesInRange(1, 100);
+        var primes = fibonacciPrimeUtil.findFibonacciPrimesInRange(1, 100);
         
         System.out.print("[");
-        for (var i = 0; i < primes.length; i++) {
-            System.out.print(primes[i]);
-            if (i != primes.length - 1) {
+        var count = 0;
+        for (var i : primes.keySet()) {
+            System.out.print(i);
+            System.out.print(", ");
+            System.out.print(primes.get(i));
+            if (count != primes.size() - 1) {
                 System.out.println(", ");
             }
+            count++;
         }
         System.out.println("]");
         
         var index = 100;
         
-        var factors = fibonacciPrimeUtil.getPrimeFactors(index);
+        var factors = fibonacciPrimeUtil.findPrimeFactors(index);
         
         System.out.println("\nPrime factors of fib(" + index + "): " + series.get(index));
         System.out.print("[");
