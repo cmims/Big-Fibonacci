@@ -29,7 +29,7 @@ public class FibonacciSeries {
         return instance;
     }
     
-    public BigInteger get(int index) {
+    public BigInteger find(int index) {
         if (series.containsKey(index)) {
             return series.get(index);
         } else if (index >= 0) {
@@ -43,50 +43,50 @@ public class FibonacciSeries {
             return fib;
         } else {
             if (Math.pow(-1, index + 1) == 1.0) {
-                return get(-index);
+                return find(-index);
             } else {
-                return get(-index).negate();
+                return find(-index).negate();
             }
         }
     }
     
-    public BigInteger[] get(int lowerBound, int upperBound) {
+    public BigInteger[] find(int lowerBound, int upperBound) {
         var fibs = new BigInteger[upperBound - lowerBound];
         for (int i = 0; i < fibs.length; i++) {
-            fibs[i] = get(lowerBound++);
+            fibs[i] = find(lowerBound++);
         }
         
         return fibs;
     }
     
-    public static BigInteger getRecursively(int index) {
+    public static BigInteger findRecursively(int index) {
         if (index == 0) {
             return BigInteger.ZERO;
         } else if (index == 1) {
             return BigInteger.ONE;
         } else if (index >= 0) {
-            return getRecursively(index - 1).add(getRecursively(index - 2));
+            return findRecursively(index - 1).add(findRecursively(index - 2));
         } else {
             if (Math.pow(-1, index + 1) == 1.0) {
-                return getRecursively(-index);
+                return findRecursively(-index);
             } else {
-                return getRecursively(-index).negate();
+                return findRecursively(-index).negate();
             }
         }
     }
     
-    public int getIndexOfFib(BigInteger fib) {
+    public int findIndexOfFib(BigInteger fib) {
         var negate = false;
         if (fib.signum() < 0) {
             negate = true;
         }
         
         var index = 0;
-        while (get(index).compareTo(fib) < 0) {
+        while (find(index).compareTo(fib) < 0) {
             index++;
         }
         
-        if (!get(index).equals(fib)) {
+        if (!find(index).equals(fib)) {
             throw new IllegalArgumentException("Number is not a Fibonacci number");
         }
         
@@ -105,9 +105,9 @@ public class FibonacciSeries {
                 System.out.println("|");
             }
         }
-        
+
         for (var i = -8; i <= 8; i++) {
-            System.out.print("   " + series.get(i) + "   ");
+            System.out.print("   " + series.find(i) + "   ");
         }
     }
 }

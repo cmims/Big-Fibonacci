@@ -28,8 +28,8 @@ public class ZeckendorfConverter {
         while (num.compareTo(BigInteger.ZERO) > 0) {
             var index = 0;
             var fib = BigInteger.ZERO;
-            while (series.get(index + 1).compareTo(num) <= 0) {
-                fib = series.get(++index);
+            while (series.find(index + 1).compareTo(num) <= 0) {
+                fib = series.find(++index);
             }
             
             fibs.add(fib);
@@ -54,20 +54,20 @@ public class ZeckendorfConverter {
             if (num.equals(BigInteger.ONE)) {
                 fib = BigInteger.ONE;
             } else if (num.compareTo(BigInteger.ZERO) < 0) {
-                while (series.get(index - 1).abs().negate().compareTo(num) >= 0) {
-                    fib = series.get(--index);
+                while (series.find(index - 1).abs().negate().compareTo(num) >= 0) {
+                    fib = series.find(--index);
                 }
                 
                 if (fib.signum() >= 0) {
-                    fib = series.get(--index);
+                    fib = series.find(--index);
                 }
             } else {
-                while (series.get(index - 1).abs().compareTo(num) <= 0) {
-                    fib = series.get(--index);
+                while (series.find(index - 1).abs().compareTo(num) <= 0) {
+                    fib = series.find(--index);
                 }
                 
                 if (fib.compareTo(BigInteger.ONE.negate()) < 0) {
-                    fib = series.get(--index);
+                    fib = series.find(--index);
                 }
             }
             
@@ -81,14 +81,14 @@ public class ZeckendorfConverter {
     public static void main(String[] args) {
         var zeckendorfConverter = new ZeckendorfConverter();
         
-        var num = new BigInteger("24");
+        var num = new BigInteger("100");
         
         System.out.print("Zeckendorf representation of " + num + ":\n[");
         var components = zeckendorfConverter.findZeckendorfRepresentation(num);
         for (var i = 0; i < components.length; i++) {
             System.out.print(components[i]);
             if (i != components.length - 1) {
-                System.out.print(",");
+                System.out.print(", ");
             }
         }
         System.out.println("]");
@@ -98,7 +98,7 @@ public class ZeckendorfConverter {
         for (var i = 0; i < components.length; i++) {
             System.out.print(components[i]);
             if (i != components.length - 1) {
-                System.out.print(",");
+                System.out.print(", ");
             }
         }
         System.out.println("]");

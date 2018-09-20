@@ -28,7 +28,7 @@ public class FibonacciPrimeUtil {
         
         var primes = new HashMap<Integer, BigInteger>();
         for (var i = lowerBound; i <= upperBound; i++) {
-            var fib = series.get(i);
+            var fib = series.find(i);
             if (fib.isProbablePrime(1)) {
                 primes.put(i, fib);
             }
@@ -50,7 +50,7 @@ public class FibonacciPrimeUtil {
         }
         
         var index = 1;
-        while (!series.get(index).mod(prime).equals(BigInteger.ZERO)) {
+        while (!series.find(index).mod(prime).equals(BigInteger.ZERO)) {
             index++;
         }
         
@@ -64,7 +64,7 @@ public class FibonacciPrimeUtil {
      */
     public BigInteger[] findPrimeFactors(int index) {
         var primeFactors = new HashSet<BigInteger>();
-        var fib = series.get(index);
+        var fib = series.find(index);
         
         for (var i = BigInteger.TWO; i.compareTo(fib.divide(i)) <= 0; i = i.add(BigInteger.ONE)) {
             while (fib.mod(i).longValue() == 0) {
@@ -98,11 +98,11 @@ public class FibonacciPrimeUtil {
         }
         System.out.println("]");
         
-        var index = 100;
+        var index = 1000;
         
         var factors = fibonacciPrimeUtil.findPrimeFactors(index);
         
-        System.out.println("\nPrime factors of fib(" + index + "): " + series.get(index));
+        System.out.println("\nPrime factors of fib(" + index + "): " + series.find(index));
         System.out.print("[");
         for (var i = 0; i < factors.length; i++) {
             System.out.print(factors[i]);

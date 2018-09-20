@@ -19,43 +19,43 @@ public class FibonacciSeriesTest {
     
     @Test
     public void getNthFibReturnsFofN() {
-        assertThat(series.get(0)).isEquivalentAccordingToCompareTo(BigInteger.ZERO);
-        assertThat(series.get(1)).isEquivalentAccordingToCompareTo(BigInteger.ONE);
-        assertThat(series.get(2)).isEquivalentAccordingToCompareTo(BigInteger.ONE);
-        assertThat(series.get(3)).isEquivalentAccordingToCompareTo(BigInteger.TWO);
-        assertThat(series.get(4)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(3));
-        assertThat(series.get(5)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(5));
-        assertThat(series.get(6)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(8));
-        assertThat(series.get(7)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(13));
-        assertThat(series.get(8)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(21));
-        assertThat(series.get(9)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(34));
-        assertThat(series.get(10)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(55));
+        assertThat(series.find(0)).isEquivalentAccordingToCompareTo(BigInteger.ZERO);
+        assertThat(series.find(1)).isEquivalentAccordingToCompareTo(BigInteger.ONE);
+        assertThat(series.find(2)).isEquivalentAccordingToCompareTo(BigInteger.ONE);
+        assertThat(series.find(3)).isEquivalentAccordingToCompareTo(BigInteger.TWO);
+        assertThat(series.find(4)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(3));
+        assertThat(series.find(5)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(5));
+        assertThat(series.find(6)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(8));
+        assertThat(series.find(7)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(13));
+        assertThat(series.find(8)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(21));
+        assertThat(series.find(9)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(34));
+        assertThat(series.find(10)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(55));
         //...
-        assertThat(series.get(20)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(6765));
+        assertThat(series.find(20)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(6765));
     }
     
     @Test
     public void getNthFibRecursivelyReturnsFofN() {
-        assertThat(FibonacciSeries.getRecursively(0)).isEquivalentAccordingToCompareTo(BigInteger.ZERO);
-        assertThat(FibonacciSeries.getRecursively(1)).isEquivalentAccordingToCompareTo(BigInteger.ONE);
-        assertThat(FibonacciSeries.getRecursively(2)).isEquivalentAccordingToCompareTo(BigInteger.ONE);
-        assertThat(FibonacciSeries.getRecursively(3)).isEquivalentAccordingToCompareTo(BigInteger.TWO);
-        assertThat(FibonacciSeries.getRecursively(4)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(3));
-        assertThat(FibonacciSeries.getRecursively(5)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(5));
-        assertThat(FibonacciSeries.getRecursively(6)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(8));
-        assertThat(FibonacciSeries.getRecursively(7)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(13));
-        assertThat(FibonacciSeries.getRecursively(8)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(21));
-        assertThat(FibonacciSeries.getRecursively(9)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(34));
-        assertThat(FibonacciSeries.getRecursively(10)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(55));
+        assertThat(FibonacciSeries.findRecursively(0)).isEquivalentAccordingToCompareTo(BigInteger.ZERO);
+        assertThat(FibonacciSeries.findRecursively(1)).isEquivalentAccordingToCompareTo(BigInteger.ONE);
+        assertThat(FibonacciSeries.findRecursively(2)).isEquivalentAccordingToCompareTo(BigInteger.ONE);
+        assertThat(FibonacciSeries.findRecursively(3)).isEquivalentAccordingToCompareTo(BigInteger.TWO);
+        assertThat(FibonacciSeries.findRecursively(4)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(3));
+        assertThat(FibonacciSeries.findRecursively(5)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(5));
+        assertThat(FibonacciSeries.findRecursively(6)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(8));
+        assertThat(FibonacciSeries.findRecursively(7)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(13));
+        assertThat(FibonacciSeries.findRecursively(8)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(21));
+        assertThat(FibonacciSeries.findRecursively(9)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(34));
+        assertThat(FibonacciSeries.findRecursively(10)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(55));
         //...
-        assertThat(FibonacciSeries.getRecursively(20)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(6765));
+        assertThat(FibonacciSeries.findRecursively(20)).isEquivalentAccordingToCompareTo(BigInteger.valueOf(6765));
     }
     
     @Test
     public void getZerothTenFibonacciNumbers() {
         int lowerBound = 0;
         int upperBound = 10;
-        var fibs = series.get(lowerBound, upperBound);
+        var fibs = series.find(lowerBound, upperBound);
         
         assertThat(fibs[0]).isEquivalentAccordingToCompareTo(BigInteger.ZERO);
         assertThat(fibs[1]).isEquivalentAccordingToCompareTo(BigInteger.ONE);
@@ -72,9 +72,9 @@ public class FibonacciSeriesTest {
     @Test
     public void getIndexOfFibReturnsCorrectIndex() {
         var expectedIndex = 15;
-        var fib = series.get(expectedIndex);
+        var fib = series.find(expectedIndex);
         assertWithMessage("Index returned differs from expected index %s", expectedIndex)
-                .that(series.getIndexOfFib(fib))
+                .that(series.findIndexOfFib(fib))
                 .isEqualTo(expectedIndex);
     }
     
