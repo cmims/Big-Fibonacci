@@ -15,3 +15,7 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile "com.google.truth:truth:0.42"
 }
+
+wrapper {
+    gradleVersion = '5.5.1'
+}
